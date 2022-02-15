@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Windows.Controls;
 
 namespace NullSoftware.Services
 {
-    public class PasswordSupplier : IPasswordSupplier
+    public class PasswordSupplier : IPasswordSupplier, INotifyPropertyChanged
     {
         #region Fields
 
@@ -20,6 +21,7 @@ namespace NullSoftware.Services
         #region Events
 
         public event EventHandler PasswordChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 
@@ -50,11 +52,16 @@ namespace NullSoftware.Services
 
         public void Clear() => _passwordBox.Clear();
 
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private void OnPasswordChanged(object sender, RoutedEventArgs e)
         {
             PasswordChanged?.Invoke(this, EventArgs.Empty);
+            OnPropertyChanged(nameof(Password));
         }
-
 
         #endregion
     }
