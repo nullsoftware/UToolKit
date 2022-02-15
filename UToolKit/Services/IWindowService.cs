@@ -13,7 +13,7 @@ namespace NullSoftware.Services
         /// Command, which executes, when window is closing.
         /// </summary>
         /// <remarks>
-        /// If the command cannot be executed, window closing must be canceled.
+        /// If the command cannot be executed, window closing will be canceled.
         /// </remarks>
         ICommand ClosingCommand { get; set; }
 
