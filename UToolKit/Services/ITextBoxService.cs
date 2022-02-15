@@ -22,22 +22,22 @@ namespace NullSoftware.Services
         /// Informs thet textbox was updated.
         /// </summary>
         /// <remarks>
-        /// For example if text or selection will change that trigger this event.
+        /// Triggers on text or selection changed.
         /// </remarks>
         event EventHandler Updated;
 
         /// <summary>
-        /// Gets or Sets text from text box.
+        /// Gets or sets text in text box.
         /// </summary>
         string Text { get; set; }
 
         /// <summary>
-        /// Gets current carret index.
+        /// Gets current caret index.
         /// </summary>
         int CaretIndex { get; }
 
         /// <summary>
-        /// Gets current selected text length.
+        /// Gets selected text length.
         /// </summary>
         int SelectionLength { get; }
 
