@@ -20,7 +20,10 @@ namespace NullSoftware.Services
 
         #region Events
 
+        /// <inheritdoc/>
         public event EventHandler PasswordChanged;
+
+        /// <inheritdoc/>
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
@@ -50,6 +53,7 @@ namespace NullSoftware.Services
 
         #region Methods
 
+        /// <inheritdoc/>
         public void Clear() => _passwordBox.Clear();
 
         protected void OnPropertyChanged(string propertyName)
