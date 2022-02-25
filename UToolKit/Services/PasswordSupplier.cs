@@ -45,6 +45,9 @@ namespace NullSoftware.Services
 
         public PasswordSupplier(PasswordBox passwordBox)
         {
+            if (passwordBox is null)
+                throw new ArgumentNullException(nameof(passwordBox));
+
             _passwordBox = passwordBox;
             _passwordBox.AddHandler(PasswordBox.PasswordChangedEvent, new RoutedEventHandler(OnPasswordChanged));
         }

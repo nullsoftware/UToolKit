@@ -50,7 +50,7 @@ namespace NullSoftware.Services
 
         public TextBoxService(TextBox textBox)
         {
-            if (textBox == null)
+            if (textBox is null)
                 throw new ArgumentNullException(nameof(textBox));
 
             _textBox = textBox;

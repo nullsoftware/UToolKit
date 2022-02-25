@@ -32,7 +32,7 @@ namespace NullSoftware.Services
 
         public WindowService(Window window)
         {
-            if (window == null)
+            if (window is null)
                 throw new ArgumentNullException(nameof(window));
 
             _currentWindow = window;
@@ -54,6 +54,12 @@ namespace NullSoftware.Services
         public void Close(bool? dialogResult)
         {
             _currentWindow.DialogResult = dialogResult;
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"Window Service: {_currentWindow.Title ?? _currentWindow.Name ?? _currentWindow.ToString()}";
         }
 
         private void OnWindowClosing(object sender, CancelEventArgs e)
