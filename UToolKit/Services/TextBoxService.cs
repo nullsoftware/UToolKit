@@ -18,26 +18,33 @@ namespace NullSoftware.Services
 
         #region Events
 
+        /// <inheritdoc/>
         public event EventHandler TextChanged;
 
+        /// <inheritdoc/>
         public event EventHandler<TextCaretChangedEventArgs> SelectionChanged;
 
+        /// <inheritdoc/>
         public event EventHandler Updated;
 
         #endregion
 
         #region Properties
 
+        /// <inheritdoc/>
         public string Text
         {
             get => _textBox.Text;
             set => _textBox.SetCurrentValue(TextBox.TextProperty, value);
         }
 
+        /// <inheritdoc/>
         public int CaretIndex => _textBox.CaretIndex;
 
+        /// <inheritdoc/>
         public int SelectionLength => _textBox.SelectionLength;
 
+        /// <inheritdoc/>
         public string SelectedText
         {
             get => _textBox.SelectedText;
@@ -63,6 +70,7 @@ namespace NullSoftware.Services
 
         #region Methods
 
+        /// <inheritdoc/>
         public void Select(int start, int length)
         {
             _textBox.Select(start, length);
@@ -74,11 +82,13 @@ namespace NullSoftware.Services
             _textBox.ScrollToHorizontalOffset((scStart.Left + scEnd.Right- _textBox.ViewportWidth) / 2 + _textBox.HorizontalOffset);
         }
 
+        /// <inheritdoc/>
         public void SelectAll()
         {
             _textBox.SelectAll();
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return _textBox.ToString();
