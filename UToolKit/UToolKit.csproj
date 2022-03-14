@@ -8,7 +8,7 @@
     <PackageId>UToolKit</PackageId>
     <Authors>Null Software</Authors>
     <Product>WPF ToolKit</Product>
-    <Description>WPF ToolKit contains useful services to work with WPF. It targets MVVM pattern.</Description>
+    <Description>WPF ToolKit contains useful services, converters to work with WPF. It targets MVVM pattern.</Description>
     <RepositoryUrl>https://github.com/nullsoftware/UToolKit</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/nullsoftware/UToolKit</PackageProjectUrl>
