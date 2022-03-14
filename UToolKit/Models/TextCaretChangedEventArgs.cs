@@ -8,8 +8,14 @@ namespace NullSoftware.Models
 {
     public class TextCaretChangedEventArgs : EventArgs
     {
+        /// <summary>
+        /// Gets textbox line index.
+        /// </summary>
         public int LineIndex { get; }
 
+        /// <summary>
+        /// Gets textbox character index.
+        /// </summary>
         public int CharacterIndex { get; }
 
         public TextCaretChangedEventArgs(int ln, int col)
@@ -18,6 +24,7 @@ namespace NullSoftware.Models
             this.CharacterIndex = col;
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"{LineIndex}, {CharacterIndex}";
