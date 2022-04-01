@@ -63,7 +63,6 @@ namespace NullSoftware.Services
             _textBox = textBox;
             _textBox.AddHandler(TextBox.TextChangedEvent, new TextChangedEventHandler(OnTextBoxTextChanged));
             _textBox.AddHandler(TextBox.SelectionChangedEvent, new RoutedEventHandler(OnTextBoxSelectionChanged));
-            //_textBox.AddHandler(TextBox.UnloadedEvent, new RoutedEventHandler(TextBox_Unloaded));
         }
 
         #endregion
@@ -122,19 +121,6 @@ namespace NullSoftware.Services
 
             OnSelectionChanged(new TextCaretChangedEventArgs(ln, col));
             OnUpdated(EventArgs.Empty);
-        }
-
-        private void OnTextBoxUnloaded(object sender, RoutedEventArgs e)
-        {
-            // unsubscribe from all not-own events
-            _textBox.RemoveHandler(TextBox.TextChangedEvent, new TextChangedEventHandler(OnTextBoxTextChanged));
-            _textBox.RemoveHandler(TextBox.SelectionChangedEvent, new RoutedEventHandler(OnTextBoxSelectionChanged));
-            _textBox.RemoveHandler(TextBox.UnloadedEvent, new RoutedEventHandler(OnTextBoxUnloaded));
-
-            // clear all subscriptions from own events
-            TextChanged = null;
-            SelectionChanged = null;
-            Updated = null;
         }
 
         #endregion

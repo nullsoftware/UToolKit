@@ -59,7 +59,7 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public override string ToString()
         {
-            return $"Window Service: {_currentWindow.Title ?? _currentWindow.Name ?? _currentWindow.ToString()}";
+            return _currentWindow.ToString();
         }
 
         private void OnWindowClosing(object sender, CancelEventArgs e)
