@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace NullSoftware
 {
-    public abstract class AsyncCommandBase : IRefreshableAsyncCommand
+    public abstract class AsyncCommandBase : IAsyncCommand, IRefreshableCommand
     {
         #region Events
 
