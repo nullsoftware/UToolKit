@@ -19,6 +19,7 @@
     <Version>0.0.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © Null Software, 2022. All rights reserved.</Copyright>
+    <PackageTags>WPF ToolKit Converter Converters Services</PackageTags>
   </PropertyGroup>
 
 </Project>
