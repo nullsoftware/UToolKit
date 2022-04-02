@@ -37,6 +37,7 @@ namespace NullSoftware.Services
             set => _passwordBox.Password = value; 
         }
 
+        /// <inheritdoc/>
         public SecureString SecurePassword => _passwordBox.SecurePassword;
 
         #endregion
@@ -59,6 +60,7 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public void Clear() => _passwordBox.Clear();
 
+        /// <inheritdoc/>
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
