@@ -34,7 +34,15 @@ namespace NullSoftware.ToolKit.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            bool isVisible = (Visibility)value == Visibility.Visible;
+            object[] result = new object[targetTypes.Length];
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = !isVisible;
+            }
+
+            return result;
         }
 
         #endregion
