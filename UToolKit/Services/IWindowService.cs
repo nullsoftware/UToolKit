@@ -36,6 +36,6 @@ namespace NullSoftware.Services
         /// Closes window with specified result.
         /// </summary>
         /// <param name="dialogResult">Dialog result.</param>
-        void Close(bool? dialogResult);
+        void Close(bool dialogResult);
     }
 }

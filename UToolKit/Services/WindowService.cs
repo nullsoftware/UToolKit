@@ -51,7 +51,7 @@ namespace NullSoftware.Services
         public void Close() => _currentWindow.Close();
 
         /// <inheritdoc/>
-        public void Close(bool? dialogResult)
+        public void Close(bool dialogResult)
         {
             _currentWindow.DialogResult = dialogResult;
         }
