@@ -12,14 +12,11 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Threading;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
-namespace NullSoftware.ToolKit
+namespace NullSoftware.ToolKit.Extensions
 {
     /// <summary>
     /// Defines a extension methods and attached properties
