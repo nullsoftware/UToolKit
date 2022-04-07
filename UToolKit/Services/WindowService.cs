@@ -21,9 +21,6 @@ namespace NullSoftware.Services
         #region Properties
 
         /// <inheritdoc/>
-        public ICommand ClosingCommand { get; set; }
-
-        /// <inheritdoc/>
         public bool IsActive => _currentWindow.IsActive;
 
         #endregion
@@ -36,8 +33,6 @@ namespace NullSoftware.Services
                 throw new ArgumentNullException(nameof(window));
 
             _currentWindow = window;
-            _currentWindow.Closing += OnWindowClosing;
-            _currentWindow.Closed += OnWindowClosed;
         }
 
         #endregion
@@ -60,23 +55,6 @@ namespace NullSoftware.Services
         public override string ToString()
         {
             return _currentWindow.ToString();
-        }
-
-        private void OnWindowClosing(object sender, CancelEventArgs e)
-        {
-            if (ClosingCommand != null)
-            {
-                if (ClosingCommand.CanExecute(null))
-                    ClosingCommand.Execute(null);
-                else
-                    e.Cancel = true;
-            }
-        }
-
-        private void OnWindowClosed(object sender, EventArgs e)
-        {
-            _currentWindow.Closing -= OnWindowClosing;
-            _currentWindow.Closed -= OnWindowClosed;
         }
 
         #endregion

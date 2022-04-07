@@ -10,14 +10,6 @@ namespace NullSoftware.Services
     public interface IWindowService
     {
         /// <summary>
-        /// Command, which executes, when window is closing.
-        /// </summary>
-        /// <remarks>
-        /// If the command cannot be executed, window closing will be canceled.
-        /// </remarks>
-        ICommand ClosingCommand { get; set; }
-
-        /// <summary>
         /// Gets value that indicates whether the window is active.
         /// </summary>
         bool IsActive { get; }
