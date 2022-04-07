@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Windows;
 
-namespace NullSoftware.ToolKit.ToolKit
+namespace NullSoftware.ToolKit
 {
     /// <summary>
     ///  Holds a collection of <see cref="RoutedCommandHandler"/> that should be

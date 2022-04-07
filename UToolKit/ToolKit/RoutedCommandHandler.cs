@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace NullSoftware.ToolKit.ToolKit
+namespace NullSoftware.ToolKit
 {
     /// <summary>
     ///  Allows associated a routed command with a non-routed command.  Used by
