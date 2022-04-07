@@ -4,7 +4,7 @@
     <TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;net5.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <RootNamespace>NullSoftware</RootNamespace>
-    <AssemblyName>utoolkit</AssemblyName>
+    <AssemblyName>UToolKit</AssemblyName>
     <PackageId>UToolKit</PackageId>
     <Authors>Null Software</Authors>
     <Product>WPF ToolKit</Product>
@@ -14,9 +14,9 @@
     <PackageProjectUrl>https://github.com/nullsoftware/UToolKit</PackageProjectUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <FileVersion>0.0.1.0</FileVersion>
-    <Version>0.0.1-preview</Version>
+    <AssemblyVersion>0.0.2.0</AssemblyVersion>
+    <FileVersion>0.0.2.0</FileVersion>
+    <Version>0.0.2-preview</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © Null Software, 2022. All rights reserved.</Copyright>
     <PackageTags>WPF ToolKit Converter Converters Services</PackageTags>
