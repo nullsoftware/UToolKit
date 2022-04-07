@@ -52,6 +52,19 @@ namespace NullSoftware.Services
         }
 
         /// <inheritdoc/>
+        public void Hide()
+        {
+            _currentWindow.Hide();
+        }
+
+        /// <inheritdoc/>
+        public void Show()
+        {
+            _currentWindow.Show();
+            _currentWindow.Activate();
+        }
+
+        /// <inheritdoc/>
         public override string ToString()
         {
             return _currentWindow.ToString();

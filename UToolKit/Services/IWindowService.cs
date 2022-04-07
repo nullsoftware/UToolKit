@@ -29,5 +29,15 @@ namespace NullSoftware.Services
         /// </summary>
         /// <param name="dialogResult">Dialog result.</param>
         void Close(bool dialogResult);
+
+        /// <summary>
+        /// Hides window from user.
+        /// </summary>
+        void Hide();
+
+        /// <summary>
+        /// Shows hidden window.
+        /// </summary>
+        void Show();
     }
 }
