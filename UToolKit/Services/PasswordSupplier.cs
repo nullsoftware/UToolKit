@@ -44,6 +44,11 @@ namespace NullSoftware.Services
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PasswordSupplier"/>
+        /// class with specified <see cref="PasswordBox"/>. 
+        /// </summary>
+        /// <param name="passwordBox">Password box to get password.</param>
         public PasswordSupplier(PasswordBox passwordBox)
         {
             if (passwordBox is null)

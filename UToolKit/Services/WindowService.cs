@@ -27,6 +27,11 @@ namespace NullSoftware.Services
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowService"/>
+        /// class with specified <see cref="WindowService"/>.
+        /// </summary>
+        /// <param name="window">The window</param>
         public WindowService(Window window)
         {
             if (window is null)

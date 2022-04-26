@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace NullSoftware.Services
 {
+    /// <summary>
+    /// Contains common window methods and properties.
+    /// </summary>
     public interface IWindowService
     {
         /// <summary>

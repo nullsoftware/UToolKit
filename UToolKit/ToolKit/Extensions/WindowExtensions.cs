@@ -15,6 +15,7 @@ using System.Windows.Data;
 using System.Windows.Threading;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using NullSoftware.Models;
 
 namespace NullSoftware.ToolKit.Extensions
 {
@@ -34,7 +35,10 @@ namespace NullSoftware.ToolKit.Extensions
         /// If the command cannot be executed, window closing will be canceled.
         /// </remarks>
         public static readonly DependencyProperty ClosingCommandProperty
-            = DependencyProperty.RegisterAttached("ClosingCommand", typeof(ICommand), typeof(WindowExtensions),
+            = DependencyProperty.RegisterAttached(
+                "ClosingCommand",
+                typeof(ICommand),
+                typeof(WindowExtensions),
                 new UIPropertyMetadata(OnClosingCommandChanged));
 
         /// <summary>
@@ -54,7 +58,7 @@ namespace NullSoftware.ToolKit.Extensions
 
         /// <summary>
         /// Gets the value of the ClosingCommand attached property
-        /// from a given <see cref="UIElement"/>.
+        /// from a given <see cref="Window"/>.
         /// </summary>
         /// <param name="element">
         /// The element from which to read the property value.
@@ -102,5 +106,88 @@ namespace NullSoftware.ToolKit.Extensions
         }
 
         #endregion ClosingCommand
+
+        #region WindowPlacementStorageStrategy
+
+        /// <summary>
+        /// Identifies the WindowPlacementStorageStrategy attached property.
+        /// </summary>
+        /// <remarks>
+        /// Provides service to handle window placement loading/saving.
+        /// </remarks>
+        public static readonly DependencyProperty WindowPlacementStorageStrategyProperty
+            = DependencyProperty.RegisterAttached(
+                "WindowPlacementStorageStrategy",
+                typeof(IWindowPlacementStorageStrategy),
+                typeof(WindowExtensions),
+                new UIPropertyMetadata(OnWindowPlacementStorageStrategyChanged));
+
+        /// <summary>
+        /// Sets the value of the WindowPlacementStorageStrategy
+        /// attached property to a given <see cref="Window"/>.
+        /// </summary>
+        /// <param name="element">
+        /// The element on which to set the ClosingCommand attached property.
+        /// </param>
+        /// <param name="value">
+        /// The property value to set.
+        /// </param>
+        public static void SetWindowPlacementStorageStrategy(DependencyObject element, IWindowPlacementStorageStrategy value)
+        {
+            element.SetValue(WindowPlacementStorageStrategyProperty, value);
+        }
+
+        /// <summary>
+        /// Gets the value of the WindowPlacementStorageStrategy
+        /// attached property from a given <see cref="Window"/>.
+        /// </summary>
+        /// <param name="element">
+        /// The element from which to read the property value.
+        /// </param>
+        /// <returns>
+        /// The value of the WindowPlacementStorageStrategy attached property.
+        /// </returns>
+        public static IWindowPlacementStorageStrategy GetWindowPlacementStorageStrategy(DependencyObject element)
+        {
+            return (IWindowPlacementStorageStrategy)element.GetValue(WindowPlacementStorageStrategyProperty);
+        }
+
+        private static void OnWindowPlacementStorageStrategyChanged(DependencyObject sender,
+           DependencyPropertyChangedEventArgs e)
+        {
+            Window win = (Window)sender;
+
+            win.SourceInitialized -= OnWindowPlacementSourceInitialized;
+            win.Closing -= OnWindowPlacementClosing;
+
+            win.SourceInitialized += OnWindowPlacementSourceInitialized;
+            win.Closing += OnWindowPlacementClosing;
+        }
+
+        private static void OnWindowPlacementSourceInitialized(object sender, EventArgs e)
+        {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
+            Window win = (Window)sender;
+            IWindowPlacementStorageStrategy placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
+            byte[] rawData = placementStorageStrategy.LoadPlacement(win);
+
+            WindowPlacementManager.SetPlacement(win, WindowPlacementManager.Deserialize(rawData));
+        }
+
+        private static void OnWindowPlacementClosing(object sender, CancelEventArgs e)
+        {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
+            Window win = (Window)sender;
+            IWindowPlacementStorageStrategy placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
+            byte[] rawData = WindowPlacementManager.Serialize(WindowPlacementManager.GetPlacement(win));
+
+            placementStorageStrategy.SavePlacement(win, rawData);
+        }
+
+        #endregion WindowPlacementStorageStrategy
     }
 }
