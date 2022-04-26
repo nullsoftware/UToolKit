@@ -93,7 +93,7 @@ namespace NullSoftware.Models
             string company = fileInfo.CompanyName;
             string appName = fileInfo.ProductName;
 
-            return @$"SOFTWARE\{company}\{appName}";
+            return string.Format(@"SOFTWARE\{0}\{1}", company, appName);
         }
     }
 }
