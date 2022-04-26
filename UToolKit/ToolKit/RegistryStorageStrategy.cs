@@ -7,12 +7,12 @@ using System.Windows;
 using System.Windows.Markup;
 using Microsoft.Win32;
 
-namespace NullSoftware.Models
+namespace NullSoftware.ToolKit
 {
     /// <summary>
     /// Provides logic to handle window placement saving/loading using Windows registry.
     /// </summary>
-    public class WindowPlacementRegistryStorageStrategy : MarkupExtension, IWindowPlacementStorageStrategy
+    public class RegistryStorageStrategy : MarkupExtension, IWindowPlacementStorageStrategy
     {
         /// <summary>
         /// Gets or sets top-level node of registry key that related to <see cref="Key"/>.
@@ -25,9 +25,9 @@ namespace NullSoftware.Models
         public string Key { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WindowPlacementRegistryStorageStrategy"/> class.
+        /// Initializes a new instance of the <see cref="RegistryStorageStrategy"/> class.
         /// </summary>
-        public WindowPlacementRegistryStorageStrategy()
+        public RegistryStorageStrategy()
         {
             Hive = ProvideDefualtHive();
             Key = ProvideDefaultKey();

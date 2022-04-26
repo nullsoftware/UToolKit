@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using NullSoftware.ToolKit;
 
-namespace NullSoftware.Models
+namespace NullSoftware.ToolKit
 {
     /// <summary>
     /// Provides methods to handle saving or loading window placement in binary format.

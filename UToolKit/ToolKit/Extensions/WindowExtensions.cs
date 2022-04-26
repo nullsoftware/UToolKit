@@ -15,7 +15,6 @@ using System.Windows.Data;
 using System.Windows.Threading;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using NullSoftware.Models;
 
 namespace NullSoftware.ToolKit.Extensions
 {
@@ -163,8 +162,11 @@ namespace NullSoftware.ToolKit.Extensions
             win.SourceInitialized -= OnWindowPlacementSourceInitialized;
             win.Closing -= OnWindowPlacementClosing;
 
-            win.SourceInitialized += OnWindowPlacementSourceInitialized;
-            win.Closing += OnWindowPlacementClosing;
+            if (e.NewValue != null)
+            {
+                win.SourceInitialized += OnWindowPlacementSourceInitialized;
+                win.Closing += OnWindowPlacementClosing;
+            }
         }
 
         private static void OnWindowPlacementSourceInitialized(object sender, EventArgs e)
