@@ -47,7 +47,7 @@ namespace NullSoftware.Models
         /// <inheritdoc/>
         public void SavePlacement(Window window, byte[] serializedPlacement)
         {
-            RegistryKey key = RegistryKey.OpenBaseKey(Hive, RegistryView.Default).OpenSubKey(Key);
+            RegistryKey key = RegistryKey.OpenBaseKey(Hive, RegistryView.Default).OpenSubKey(Key, true);
 
             if (key == null)
                 key = Registry.CurrentUser.CreateSubKey(Key);

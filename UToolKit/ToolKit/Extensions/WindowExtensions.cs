@@ -173,7 +173,8 @@ namespace NullSoftware.ToolKit.Extensions
             IWindowPlacementStorageStrategy placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
             byte[] rawData = placementStorageStrategy.LoadPlacement(win);
 
-            WindowPlacementManager.SetPlacement(win, WindowPlacementManager.Deserialize(rawData));
+            if (rawData != null)
+                WindowPlacementManager.SetPlacement(win, WindowPlacementManager.Deserialize(rawData));
         }
 
         private static void OnWindowPlacementClosing(object sender, CancelEventArgs e)
