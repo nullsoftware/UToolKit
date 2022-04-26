@@ -155,6 +155,9 @@ namespace NullSoftware.ToolKit.Extensions
         private static void OnWindowPlacementStorageStrategyChanged(DependencyObject sender,
            DependencyPropertyChangedEventArgs e)
         {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
             Window win = (Window)sender;
 
             win.SourceInitialized -= OnWindowPlacementSourceInitialized;
