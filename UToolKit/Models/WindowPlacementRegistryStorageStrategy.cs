@@ -71,7 +71,7 @@ namespace NullSoftware.Models
         /// <returns>The registry setting key for specified window.</returns>
         protected virtual string GetSettingKey(Window window)
         {
-            return window.Name ?? window.GetType().Name;
+            return (window.Name ?? window.GetType().Name) + "Placement";
         }
 
         /// <summary>
