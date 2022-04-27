@@ -25,6 +25,15 @@ namespace NullSoftware.ToolKit
         public string Key { get; set; }
 
         /// <summary>
+        /// Gets or sets custom value name that will be used
+        /// to retrive or set window placement to registry.
+        /// </summary>
+        /// <remarks>
+        /// Note: if this name is not null, it will be used instead of auto-generated.
+        /// </remarks>
+        public string CustomName { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RegistryStorageStrategy"/> class.
         /// </summary>
         public RegistryStorageStrategy()
@@ -71,7 +80,7 @@ namespace NullSoftware.ToolKit
         /// <returns>The registry setting key for specified window.</returns>
         protected virtual string GetSettingKey(Window window)
         {
-            return window.GetType().Name + ".Placement";
+            return CustomName ?? window.GetType().Name + ".Placement";
         }
 
         /// <summary>
@@ -92,6 +101,9 @@ namespace NullSoftware.ToolKit
             FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
             string company = fileInfo.CompanyName;
             string appName = fileInfo.ProductName;
+
+            if (string.IsNullOrEmpty(company))
+                return string.Format(@"SOFTWARE\{0}", appName);
 
             return string.Format(@"SOFTWARE\{0}\{1}", company, appName);
         }
