@@ -6,7 +6,7 @@ using System.Windows.Interop;
 
 namespace NullSoftware.ToolKit
 {
-    public static class WindowPlacementManager
+    internal static class WindowPlacementManager
     {
         // RECT structure required by WINDOWPLACEMENT structure
         [StructLayout(LayoutKind.Sequential)]
