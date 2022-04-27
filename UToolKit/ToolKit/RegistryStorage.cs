@@ -12,7 +12,7 @@ namespace NullSoftware.ToolKit
     /// <summary>
     /// Provides logic to handle window placement saving/loading using Windows registry.
     /// </summary>
-    public class RegistryStorageStrategy : MarkupExtension, IWindowPlacementStorageStrategy
+    public class RegistryStorage : MarkupExtension, IWindowPlacementStorage
     {
         /// <summary>
         /// Gets or sets top-level node of registry key that related to <see cref="Key"/>.
@@ -34,9 +34,9 @@ namespace NullSoftware.ToolKit
         public string CustomName { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegistryStorageStrategy"/> class.
+        /// Initializes a new instance of the <see cref="RegistryStorage"/> class.
         /// </summary>
-        public RegistryStorageStrategy()
+        public RegistryStorage()
         {
             Hive = ProvideDefualtHive();
             Key = ProvideDefaultKey();

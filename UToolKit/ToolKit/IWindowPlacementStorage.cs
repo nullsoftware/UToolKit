@@ -9,7 +9,7 @@ namespace NullSoftware.ToolKit
     /// <summary>
     /// Provides methods to handle saving or loading window placement in binary format.
     /// </summary>
-    public interface IWindowPlacementStorageStrategy
+    public interface IWindowPlacementStorage
     {
         /// <summary>
         /// Saves placement of specified window.

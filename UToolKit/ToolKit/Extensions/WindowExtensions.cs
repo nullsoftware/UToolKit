@@ -117,7 +117,7 @@ namespace NullSoftware.ToolKit.Extensions
         public static readonly DependencyProperty WindowPlacementStorageStrategyProperty
             = DependencyProperty.RegisterAttached(
                 "WindowPlacementStorageStrategy",
-                typeof(IWindowPlacementStorageStrategy),
+                typeof(IWindowPlacementStorage),
                 typeof(WindowExtensions),
                 new UIPropertyMetadata(OnWindowPlacementStorageStrategyChanged));
 
@@ -131,7 +131,7 @@ namespace NullSoftware.ToolKit.Extensions
         /// <param name="value">
         /// The property value to set.
         /// </param>
-        public static void SetWindowPlacementStorageStrategy(DependencyObject element, IWindowPlacementStorageStrategy value)
+        public static void SetWindowPlacementStorageStrategy(DependencyObject element, IWindowPlacementStorage value)
         {
             element.SetValue(WindowPlacementStorageStrategyProperty, value);
         }
@@ -146,9 +146,9 @@ namespace NullSoftware.ToolKit.Extensions
         /// <returns>
         /// The value of the WindowPlacementStorageStrategy attached property.
         /// </returns>
-        public static IWindowPlacementStorageStrategy GetWindowPlacementStorageStrategy(DependencyObject element)
+        public static IWindowPlacementStorage GetWindowPlacementStorageStrategy(DependencyObject element)
         {
-            return (IWindowPlacementStorageStrategy)element.GetValue(WindowPlacementStorageStrategyProperty);
+            return (IWindowPlacementStorage)element.GetValue(WindowPlacementStorageStrategyProperty);
         }
 
         private static void OnWindowPlacementStorageStrategyChanged(DependencyObject sender,
@@ -175,7 +175,7 @@ namespace NullSoftware.ToolKit.Extensions
                 return;
 
             Window win = (Window)sender;
-            IWindowPlacementStorageStrategy placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
+            IWindowPlacementStorage placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
             byte[] rawData = placementStorageStrategy.LoadPlacement(win);
 
             if (rawData != null)
@@ -188,7 +188,7 @@ namespace NullSoftware.ToolKit.Extensions
                 return;
 
             Window win = (Window)sender;
-            IWindowPlacementStorageStrategy placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
+            IWindowPlacementStorage placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
             byte[] rawData = WindowPlacementManager.Serialize(WindowPlacementManager.GetPlacement(win));
 
             placementStorageStrategy.SavePlacement(win, rawData);
