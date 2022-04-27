@@ -106,23 +106,23 @@ namespace NullSoftware.ToolKit.Extensions
 
         #endregion ClosingCommand
 
-        #region WindowPlacementStorageStrategy
+        #region PlacementStorageStrategy
 
         /// <summary>
-        /// Identifies the WindowPlacementStorageStrategy attached property.
+        /// Identifies the PlacementStorageStrategy attached property.
         /// </summary>
         /// <remarks>
         /// Provides service to handle window placement loading/saving.
         /// </remarks>
-        public static readonly DependencyProperty WindowPlacementStorageStrategyProperty
+        public static readonly DependencyProperty PlacementStorageStrategyProperty
             = DependencyProperty.RegisterAttached(
-                "WindowPlacementStorageStrategy",
+                "PlacementStorageStrategy",
                 typeof(IWindowPlacementStorage),
                 typeof(WindowExtensions),
-                new UIPropertyMetadata(OnWindowPlacementStorageStrategyChanged));
+                new UIPropertyMetadata(OnPlacementStorageStrategyChanged));
 
         /// <summary>
-        /// Sets the value of the WindowPlacementStorageStrategy
+        /// Sets the value of the PlacementStorageStrategy
         /// attached property to a given <see cref="Window"/>.
         /// </summary>
         /// <param name="element">
@@ -131,27 +131,27 @@ namespace NullSoftware.ToolKit.Extensions
         /// <param name="value">
         /// The property value to set.
         /// </param>
-        public static void SetWindowPlacementStorageStrategy(DependencyObject element, IWindowPlacementStorage value)
+        public static void SetPlacementStorageStrategy(DependencyObject element, IWindowPlacementStorage value)
         {
-            element.SetValue(WindowPlacementStorageStrategyProperty, value);
+            element.SetValue(PlacementStorageStrategyProperty, value);
         }
 
         /// <summary>
-        /// Gets the value of the WindowPlacementStorageStrategy
+        /// Gets the value of the PlacementStorageStrategy
         /// attached property from a given <see cref="Window"/>.
         /// </summary>
         /// <param name="element">
         /// The element from which to read the property value.
         /// </param>
         /// <returns>
-        /// The value of the WindowPlacementStorageStrategy attached property.
+        /// The value of the PlacementStorageStrategy attached property.
         /// </returns>
-        public static IWindowPlacementStorage GetWindowPlacementStorageStrategy(DependencyObject element)
+        public static IWindowPlacementStorage GetPlacementStorageStrategy(DependencyObject element)
         {
-            return (IWindowPlacementStorage)element.GetValue(WindowPlacementStorageStrategyProperty);
+            return (IWindowPlacementStorage)element.GetValue(PlacementStorageStrategyProperty);
         }
 
-        private static void OnWindowPlacementStorageStrategyChanged(DependencyObject sender,
+        private static void OnPlacementStorageStrategyChanged(DependencyObject sender,
            DependencyPropertyChangedEventArgs e)
         {
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
@@ -175,7 +175,7 @@ namespace NullSoftware.ToolKit.Extensions
                 return;
 
             Window win = (Window)sender;
-            IWindowPlacementStorage placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
+            IWindowPlacementStorage placementStorageStrategy = GetPlacementStorageStrategy(win);
             byte[] rawData = placementStorageStrategy.LoadPlacement(win);
 
             if (rawData != null)
@@ -188,12 +188,12 @@ namespace NullSoftware.ToolKit.Extensions
                 return;
 
             Window win = (Window)sender;
-            IWindowPlacementStorage placementStorageStrategy = GetWindowPlacementStorageStrategy(win);
+            IWindowPlacementStorage placementStorageStrategy = GetPlacementStorageStrategy(win);
             byte[] rawData = WindowPlacementManager.Serialize(WindowPlacementManager.GetPlacement(win));
 
             placementStorageStrategy.SavePlacement(win, rawData);
         }
 
-        #endregion WindowPlacementStorageStrategy
+        #endregion PlacementStorageStrategy
     }
 }
