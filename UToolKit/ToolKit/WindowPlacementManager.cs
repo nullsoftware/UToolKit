@@ -24,6 +24,11 @@ namespace NullSoftware.ToolKit
                 this.Right = right;
                 this.Bottom = bottom;
             }
+
+            public override string ToString()
+            {
+                return string.Format("{0}, {1}, {2}, {3}", Left, Top, Right, Bottom);
+            }
         }
 
         // POINT structure required by WINDOWPLACEMENT structure
@@ -37,6 +42,11 @@ namespace NullSoftware.ToolKit
             {
                 this.X = x;
                 this.Y = y;
+            }
+
+            public override string ToString()
+            {
+                return string.Format("{0}, {1}", X, Y);
             }
         }
 
@@ -80,28 +90,13 @@ namespace NullSoftware.ToolKit
 
         public static byte[] Serialize(WINDOWPLACEMENT placement)
         {
-            byte[] result;
+            int size = Marshal.SizeOf(placement);
+            byte[] result = new byte[size];
 
-            using (MemoryStream stream = new MemoryStream())
-            using (BinaryWriter writer = new BinaryWriter(stream))
-            {
-                writer.Write(placement.length);
-                writer.Write(placement.flags);
-                writer.Write(placement.showCmd);
-
-                writer.Write(placement.minPosition.X);
-                writer.Write(placement.minPosition.Y);
-
-                writer.Write(placement.maxPosition.X);
-                writer.Write(placement.maxPosition.Y);
-
-                writer.Write(placement.normalPosition.Left);
-                writer.Write(placement.normalPosition.Top);
-                writer.Write(placement.normalPosition.Right);
-                writer.Write(placement.normalPosition.Bottom);
-
-                result = stream.ToArray();
-            }
+            IntPtr ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(placement, ptr, true);
+            Marshal.Copy(ptr, result, 0, size);
+            Marshal.FreeHGlobal(ptr);
 
             return result;
         }
@@ -110,24 +105,13 @@ namespace NullSoftware.ToolKit
         {
             WINDOWPLACEMENT wp = new WINDOWPLACEMENT();
 
-            using (MemoryStream stream = new MemoryStream(data))
-            using (BinaryReader reader = new BinaryReader(stream))
-            {
-                wp.length = reader.ReadInt32();
-                wp.flags = reader.ReadInt32();
-                wp.showCmd = reader.ReadInt32();
+            int size = Marshal.SizeOf(wp);
+            IntPtr ptr = Marshal.AllocHGlobal(size);
 
-                wp.minPosition.X = reader.ReadInt32();
-                wp.minPosition.Y = reader.ReadInt32();
+            Marshal.Copy(data, 0, ptr, size);
 
-                wp.maxPosition.X = reader.ReadInt32();
-                wp.maxPosition.Y = reader.ReadInt32();
-
-                wp.normalPosition.Left = reader.ReadInt32();
-                wp.normalPosition.Top = reader.ReadInt32();
-                wp.normalPosition.Right = reader.ReadInt32();
-                wp.normalPosition.Bottom = reader.ReadInt32();
-            }
+            wp = (WINDOWPLACEMENT)Marshal.PtrToStructure(ptr, wp.GetType());
+            Marshal.FreeHGlobal(ptr);
 
             return wp;
         }
