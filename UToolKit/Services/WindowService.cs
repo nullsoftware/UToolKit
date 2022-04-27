@@ -23,6 +23,9 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public bool IsActive => _currentWindow.IsActive;
 
+        /// <inheritdoc/>
+        public bool IsVisible => _currentWindow.Visibility == Visibility.Visible;
+
         #endregion
 
         #region Constructors
@@ -65,6 +68,9 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public void Show()
         {
+            if (!IsVisible)
+                throw new InvalidOperationException("Window is not hidden.");
+
             _currentWindow.Show();
             _currentWindow.Activate();
         }

@@ -24,9 +24,6 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public event EventHandler<TextCaretChangedEventArgs> SelectionChanged;
 
-        /// <inheritdoc/>
-        public event EventHandler Updated;
-
         #endregion
 
         #region Properties
@@ -103,15 +100,9 @@ namespace NullSoftware.Services
             SelectionChanged?.Invoke(this, e);
         }
 
-        protected virtual void OnUpdated(EventArgs e)
-        {
-            Updated?.Invoke(this, e);
-        }
-
         private void OnTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             OnTextChanged(EventArgs.Empty);
-            OnUpdated(EventArgs.Empty);
         }
 
         private void OnTextBoxSelectionChanged(object sender, RoutedEventArgs e)
@@ -120,7 +111,6 @@ namespace NullSoftware.Services
             int col = _textBox.CaretIndex - _textBox.GetCharacterIndexFromLineIndex(ln);
 
             OnSelectionChanged(new TextCaretChangedEventArgs(ln, col));
-            OnUpdated(EventArgs.Empty);
         }
 
         #endregion

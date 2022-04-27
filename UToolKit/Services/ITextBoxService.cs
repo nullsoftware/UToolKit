@@ -19,14 +19,6 @@ namespace NullSoftware.Services
         event EventHandler<TextCaretChangedEventArgs> SelectionChanged;
 
         /// <summary>
-        /// Informs thet textbox was updated.
-        /// </summary>
-        /// <remarks>
-        /// Triggers on text or selection changed.
-        /// </remarks>
-        event EventHandler Updated;
-
-        /// <summary>
         /// Gets or sets text in text box.
         /// </summary>
         string Text { get; set; }

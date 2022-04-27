@@ -18,6 +18,14 @@ namespace NullSoftware.Services
         bool IsActive { get; }
 
         /// <summary>
+        /// Gets value that indicates whether the window is not hidden.
+        /// </summary>
+        /// <remarks>
+        /// Can be used with <see cref="Hide"/> or <see cref="Show"/> methods.
+        /// </remarks>
+        bool IsVisible { get; }
+
+        /// <summary>
         /// Attempts to brind the window to the foreground and activates it.
         /// </summary>
         void Activate();
@@ -41,6 +49,9 @@ namespace NullSoftware.Services
         /// <summary>
         /// Shows hidden window.
         /// </summary>
+        /// <remarks>
+        /// Before call window should be hidden by <see cref="Hide"/> method.
+        /// </remarks>
         void Show();
     }
 }
