@@ -63,7 +63,7 @@ namespace NullSoftware.ToolKit
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Settings is null)
-                throw new InvalidOperationException("Missing settings instance.");
+                throw new InvalidOperationException("Missing Settings instance.");
 
             return this;
         }
