@@ -10,15 +10,26 @@ using System.Windows.Markup;
 
 namespace NullSoftware.ToolKit
 {
+    /// <summary>
+    /// Provides logic to handle window placement saving/loading using <see cref="ApplicationSettingsBase"/>.
+    /// </summary>
     public class SettingsStorage : MarkupExtension, IWindowPlacementStorage
     {
+        /// <summary>
+        /// Gets or sets main settings instance
+        /// that will be used to store window placement.
+        /// </summary>
         public ApplicationSettingsBase Settings { get; set; }
 
-        public bool IsSaveSettingsEnabled { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether the settings
+        /// should be saved within the <see cref="SavePlacement(Window, byte[])"/> method.
+        /// </summary>
+        public bool IsSaveSettingsEnabled { get; set; } = true;
 
         /// <summary>
         /// Gets or sets custom value name that will be used
-        /// to retrive or set window placement to registry.
+        /// to retrive or set window placement to application settings.
         /// </summary>
         /// <remarks>
         /// Note: if this name is not null, it will be used instead of auto-generated.
@@ -26,20 +37,11 @@ namespace NullSoftware.ToolKit
         public string CustomName { get; set; }
 
         /// <inheritdoc/>
-
         public byte[] LoadPlacement(Window window)
         {
             string name = GetSettingKey(window);
 
-            if (!Settings.Properties.Cast<SettingsProperty>().Any(t => t.Name == name))
-            {
-                var prop = new SettingsProperty(name);
-                prop.PropertyType = typeof(byte[]);
-                prop.Provider = Settings.Providers["LocalFileSettingsProvider"];
-                prop.Attributes.Add(typeof(UserScopedSettingAttribute), new UserScopedSettingAttribute());
-
-                Settings.Properties.Add(prop);
-            }
+            EnsurePropertyCreated(name);
 
             return (byte[])Settings[name];
         }
@@ -49,8 +51,7 @@ namespace NullSoftware.ToolKit
         {
             string name = GetSettingKey(window);
 
-            if (!Settings.Properties.Cast<SettingsProperty>().Any(t => t.Name == name))
-                Settings.Properties.Add(new SettingsProperty(name) { PropertyType = typeof(byte[]), Provider = new LocalFileSettingsProvider() });
+            EnsurePropertyCreated(name);
 
             Settings[name] = serializedPlacement;
 
@@ -77,5 +78,19 @@ namespace NullSoftware.ToolKit
             return CustomName ?? window.GetType().Name + "Placement";
         }
 
+        private void EnsurePropertyCreated(string name)
+        {
+            if (!Settings.Properties.Cast<SettingsProperty>().Any(t => t.Name == name))
+            {
+                var prop = new SettingsProperty(name);
+                prop.PropertyType = typeof(byte[]);
+                prop.SerializeAs = SettingsSerializeAs.Xml;
+                prop.Provider = Settings.Providers[nameof(LocalFileSettingsProvider)];
+                prop.Attributes.Add(typeof(UserScopedSettingAttribute), new UserScopedSettingAttribute());
+                //prop.Attributes.Add(typeof(DebuggerNonUserCodeAttribute), new DebuggerNonUserCodeAttribute());
+
+                Settings.Properties.Add(prop);
+            }
+        }
     }
 }
