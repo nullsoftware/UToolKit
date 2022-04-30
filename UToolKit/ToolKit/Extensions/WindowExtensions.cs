@@ -175,8 +175,8 @@ namespace NullSoftware.ToolKit.Extensions
                 return;
 
             Window win = (Window)sender;
-            IWindowPlacementStorage placementStorageStrategy = GetPlacementStorageStrategy(win);
-            byte[] rawData = placementStorageStrategy.LoadPlacement(win);
+            IWindowPlacementStorage placementStorage = GetPlacementStorageStrategy(win);
+            byte[] rawData = placementStorage.LoadPlacement(win);
 
             if (rawData != null)
                 WindowPlacementManager.SetPlacement(win, WindowPlacementManager.Deserialize(rawData));
@@ -188,10 +188,10 @@ namespace NullSoftware.ToolKit.Extensions
                 return;
 
             Window win = (Window)sender;
-            IWindowPlacementStorage placementStorageStrategy = GetPlacementStorageStrategy(win);
+            IWindowPlacementStorage placementStorage = GetPlacementStorageStrategy(win);
             byte[] rawData = WindowPlacementManager.Serialize(WindowPlacementManager.GetPlacement(win));
 
-            placementStorageStrategy.SavePlacement(win, rawData);
+            placementStorage.SavePlacement(win, rawData);
         }
 
         #endregion PlacementStorageStrategy
