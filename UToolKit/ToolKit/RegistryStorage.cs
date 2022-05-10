@@ -25,13 +25,10 @@ namespace NullSoftware.ToolKit
         public string Key { get; set; }
 
         /// <summary>
-        /// Gets or sets custom value name that will be used
+        /// Gets or sets name format that will be used
         /// to retrive or set window placement to registry.
         /// </summary>
-        /// <remarks>
-        /// Note: if this name is not null, it will be used instead of auto-generated.
-        /// </remarks>
-        public string CustomName { get; set; }
+        public string NameFormat { get; set; } = "{0}.Placement";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RegistryStorage"/> class.
@@ -67,7 +64,7 @@ namespace NullSoftware.ToolKit
         /// <inheritdoc/>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (string.IsNullOrWhiteSpace(Key))
+            if (string.IsNullOrWhiteSpace(Key) || string.IsNullOrWhiteSpace(NameFormat))
                 throw new InvalidOperationException("Inputs cannot be blank.");
 
             return this;
@@ -80,7 +77,7 @@ namespace NullSoftware.ToolKit
         /// <returns>The registry setting key for specified window.</returns>
         protected virtual string GetSettingKey(Window window)
         {
-            return CustomName ?? window.GetType().Name + ".Placement";
+            return string.Format(NameFormat, window.GetType().Name);
         }
 
         /// <summary>

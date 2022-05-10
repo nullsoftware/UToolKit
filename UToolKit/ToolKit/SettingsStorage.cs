@@ -28,13 +28,10 @@ namespace NullSoftware.ToolKit
         public bool IsSaveSettingsEnabled { get; set; } = true;
 
         /// <summary>
-        /// Gets or sets custom value name that will be used
+        /// Gets or sets name format that will be used
         /// to retrive or set window placement to application settings.
         /// </summary>
-        /// <remarks>
-        /// Note: if this name is not null, it will be used instead of auto-generated.
-        /// </remarks>
-        public string CustomName { get; set; }
+        public string NameFormat { get; set; } = "{0}Placement";
 
         /// <inheritdoc/>
         public byte[] LoadPlacement(Window window)
@@ -64,6 +61,8 @@ namespace NullSoftware.ToolKit
         {
             if (Settings is null)
                 throw new InvalidOperationException("Missing Settings instance.");
+            if (string.IsNullOrWhiteSpace(NameFormat))
+                throw new InvalidOperationException("Inputs cannot be blank.");
 
             return this;
         }
@@ -75,7 +74,7 @@ namespace NullSoftware.ToolKit
         /// <returns>The registry setting key for specified window.</returns>
         protected virtual string GetSettingKey(Window window)
         {
-            return CustomName ?? window.GetType().Name + "Placement";
+            return string.Format(NameFormat, window.GetType().Name);
         }
 
         private void EnsurePropertyCreated(string name)
