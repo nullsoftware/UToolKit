@@ -68,10 +68,9 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public void Show()
         {
-            if (IsVisible)
-                throw new InvalidOperationException("Window is not hidden.");
+            if (!IsVisible)
+               _currentWindow.Show();
 
-            _currentWindow.Show();
             _currentWindow.Activate();
         }
 
