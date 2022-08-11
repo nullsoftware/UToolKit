@@ -73,7 +73,7 @@ namespace NullSoftware.ToolKit.Extensions
         private static void OnCloseCommandChanged(DependencyObject sender,
             DependencyPropertyChangedEventArgs e)
         {
-            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            if (DesignModeVerifier.GetIsInDesignMode())
                 return;
 
             Window win = (Window)sender;
@@ -157,7 +157,7 @@ namespace NullSoftware.ToolKit.Extensions
         private static void OnPlacementStorageStrategyChanged(DependencyObject sender,
            DependencyPropertyChangedEventArgs e)
         {
-            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            if (DesignModeVerifier.GetIsInDesignMode())
                 return;
 
             Window win = (Window)sender;
@@ -174,7 +174,7 @@ namespace NullSoftware.ToolKit.Extensions
 
         private static void OnWindowPlacementSourceInitialized(object sender, EventArgs e)
         {
-            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            if (DesignModeVerifier.GetIsInDesignMode())
                 return;
 
             Window win = (Window)sender;
@@ -187,7 +187,7 @@ namespace NullSoftware.ToolKit.Extensions
 
         private static void OnWindowPlacementClosing(object sender, CancelEventArgs e)
         {
-            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            if (DesignModeVerifier.GetIsInDesignMode())
                 return;
 
             Window win = (Window)sender;
