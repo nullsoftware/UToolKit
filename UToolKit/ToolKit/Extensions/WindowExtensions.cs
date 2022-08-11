@@ -24,55 +24,58 @@ namespace NullSoftware.ToolKit.Extensions
     /// </summary>
     public static class WindowExtensions
     {
-        #region ClosingCommand
+        #region CloseCommand
 
         /// <summary>
-        /// Identifies the ClosingCommand attached property.
+        /// Identifies the CloseCommand attached property.
         /// </summary>
         /// <remarks>
         /// Command, which executes, when window is closing.
         /// If the command cannot be executed, window closing will be canceled.
         /// </remarks>
-        public static readonly DependencyProperty ClosingCommandProperty
+        public static readonly DependencyProperty CloseCommandProperty
             = DependencyProperty.RegisterAttached(
-                "ClosingCommand",
+                "CloseCommand",
                 typeof(ICommand),
                 typeof(WindowExtensions),
-                new UIPropertyMetadata(OnClosingCommandChanged));
+                new UIPropertyMetadata(OnCloseCommandChanged));
 
         /// <summary>
-        /// Sets the value of the ClosingCommand attached property
+        /// Sets the value of the CloseCommand attached property
         /// to a given <see cref="Window"/>.
         /// </summary>
         /// <param name="element">
-        /// The element on which to set the ClosingCommand attached property.
+        /// The element on which to set the CloseCommand attached property.
         /// </param>
         /// <param name="value">
         /// The property value to set.
         /// </param>
-        public static void SetClosingCommand(DependencyObject element, ICommand value)
+        public static void SetCloseCommand(DependencyObject element, ICommand value)
         {
-            element.SetValue(ClosingCommandProperty, value);
+            element.SetValue(CloseCommandProperty, value);
         }
 
         /// <summary>
-        /// Gets the value of the ClosingCommand attached property
+        /// Gets the value of the CloseCommand attached property
         /// from a given <see cref="Window"/>.
         /// </summary>
         /// <param name="element">
         /// The element from which to read the property value.
         /// </param>
         /// <returns>
-        /// The value of the ClosingCommand attached property.
+        /// The value of the CloseCommand attached property.
         /// </returns>
-        public static ICommand GetClosingCommand(DependencyObject element)
+        public static ICommand GetCloseCommand(DependencyObject element)
         {
-            return (ICommand)element.GetValue(ClosingCommandProperty);
+            return (ICommand)element.GetValue(CloseCommandProperty);
         }
 
-        private static void OnClosingCommandChanged(DependencyObject sender,
+        private static void OnCloseCommandChanged(DependencyObject sender,
             DependencyPropertyChangedEventArgs e)
         {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
             Window win = (Window)sender;
 
             win.Closing -= OnWindowClosing;
@@ -88,7 +91,7 @@ namespace NullSoftware.ToolKit.Extensions
         private static void OnWindowClosing(object sender, CancelEventArgs e)
         {
             Window win = (Window)sender;
-            ICommand cmd = GetClosingCommand(win);
+            ICommand cmd = GetCloseCommand(win);
 
             if (cmd.CanExecute(null))
                 cmd.Execute(null);
@@ -104,7 +107,7 @@ namespace NullSoftware.ToolKit.Extensions
             win.Closed -= OnWindowClosed;
         }
 
-        #endregion ClosingCommand
+        #endregion CloseCommand
 
         #region PlacementStorageStrategy
 
@@ -126,7 +129,7 @@ namespace NullSoftware.ToolKit.Extensions
         /// attached property to a given <see cref="Window"/>.
         /// </summary>
         /// <param name="element">
-        /// The element on which to set the ClosingCommand attached property.
+        /// The element on which to set the CloseCommand attached property.
         /// </param>
         /// <param name="value">
         /// The property value to set.
