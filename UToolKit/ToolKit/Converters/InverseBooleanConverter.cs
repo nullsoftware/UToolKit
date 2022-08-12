@@ -9,7 +9,7 @@ using System.Windows.Data;
 namespace NullSoftware.ToolKit.Converters
 {
     [ValueConversion(typeof(bool), typeof(bool))]
-    public class InvertBooleanConverter : IValueConverter
+    public class InverseBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -9,13 +9,13 @@ using System.Windows.Data;
 namespace NullSoftware.ToolKit.Converters
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
-    public class InvertBooleanToHiddenVisibilityConverter : IValueConverter, IMultiValueConverter
+    public class InverseBooleanToVisibilityConverter : IValueConverter, IMultiValueConverter
     {
         #region IValueConverter
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value ? Visibility.Hidden : Visibility.Visible;
+            return (bool)value ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -29,7 +29,7 @@ namespace NullSoftware.ToolKit.Converters
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            return values.All(t => (bool)t) ? Visibility.Hidden : Visibility.Visible;
+            return values.All(t => (bool)t) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
