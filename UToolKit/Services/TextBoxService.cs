@@ -31,7 +31,7 @@ namespace NullSoftware.Services
         /// <inheritdoc/>
         public string Text
         {
-            get => _textBox.Text;
+            get => (string)_textBox.GetValue(TextBox.TextProperty);
             set => _textBox.SetCurrentValue(TextBox.TextProperty, value);
         }
 
