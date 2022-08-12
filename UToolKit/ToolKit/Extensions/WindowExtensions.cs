@@ -92,9 +92,10 @@ namespace NullSoftware.ToolKit.Extensions
         {
             Window win = (Window)sender;
             ICommand cmd = GetCloseCommand(win);
+            object parameter = GetCloseCommandParameter(win);
 
-            if (cmd.CanExecute(null))
-                cmd.Execute(null);
+            if (cmd.CanExecute(parameter))
+                cmd.Execute(parameter);
             else
                 e.Cancel = true;
         }
@@ -105,6 +106,50 @@ namespace NullSoftware.ToolKit.Extensions
 
             win.Closing -= OnWindowClosing;
             win.Closed -= OnWindowClosed;
+        }
+
+        #endregion CloseCommand
+
+        #region CloseCommandParameter
+
+        /// <summary>
+        /// Identifies the CloseCommandParameter attached property.
+        /// </summary>
+        public static readonly DependencyProperty CloseCommandParameterProperty
+            = DependencyProperty.RegisterAttached(
+                "CloseCommandParameter",
+                typeof(object),
+                typeof(WindowExtensions),
+                new UIPropertyMetadata());
+
+        /// <summary>
+        /// Sets the value of the CloseCommandParameter attached property
+        /// to a given <see cref="Window"/>.
+        /// </summary>
+        /// <param name="element">
+        /// The element on which to set the CloseCommandParameter attached property.
+        /// </param>
+        /// <param name="value">
+        /// The property value to set.
+        /// </param>
+        public static void SetCloseCommandParameter(DependencyObject element, object value)
+        {
+            element.SetValue(CloseCommandParameterProperty, value);
+        }
+
+        /// <summary>
+        /// Gets the value of the CloseCommandParameter attached property
+        /// from a given <see cref="Window"/>.
+        /// </summary>
+        /// <param name="element">
+        /// The element from which to read the property value.
+        /// </param>
+        /// <returns>
+        /// The value of the CloseCommandParameter attached property.
+        /// </returns>
+        public static object GetCloseCommandParameter(DependencyObject element)
+        {
+            return element.GetValue(CloseCommandParameterProperty);
         }
 
         #endregion CloseCommand
