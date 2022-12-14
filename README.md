@@ -102,7 +102,7 @@ or
         xmlns:prop="clr-namespace:ExampleProject.Properties"
         tk:WindowExtensions.PlacementStorageStrategy="{tk:SettingsStorage Settings={x:Static prop:Settings.Default}}" />
 ```
-
+----
 How to use `RoutedCommandHandlers`:
 ```XAML
 <Window xmlns:tk="https://github.com/nullsoftware/UToolKit">
