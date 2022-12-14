@@ -24,9 +24,9 @@ Extensions:
 - **HyperlinkExtensions**
   * `IsExternal` - if `true` Hyperlink will execute `Process.Start` using `Hyperlink.NavigateUri` after click.
 - **WindowExtensions**
-  * `CloseCommand` - command which executes on windows closing. If `ICommand.CanExecute()` returns false - windows closing will be cancalled.
+  * `CloseCommand` - command which executes on windows closing. If `ICommand.CanExecute()` returns false - window closing will be cancalled.
   * `CloseCommandParameter` - parameter for `CloseCommand`.
-  * `PlacementStorageStrategy` - windows placement storage strategy.
+  * `PlacementStorageStrategy` - window placement storage strategy.
   There are 2 different implemented strategies, `RegistryStorage` and `SettingsStorage`.
   It is possible to implement custom strategy using `IWindowPlacementStorage`.  
 - **RoutedCommand bindings** - allows to bind `ICommand` to `RoutedCommand`.
