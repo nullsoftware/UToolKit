@@ -9,9 +9,9 @@ It is recommended to use this library with [Fody.PropertyChanged](https://github
 
 Main features:
 - **ObservableObject** (`INotifyPropertyChanged` implementation)
-- **RelayCommand** (`ICommand` implementation)
-- **RelayAsyncCommand** (`ICommand` async implementation)
-- **IRefreshableCommand** (inherits `ICommand` interface, allows to call `ICommand.CanExecuteChanged` manually)
+- **IRefreshableCommand** (inherits `ICommand`, allows to call `ICommand.CanExecuteChanged` manually)
+- **RelayCommand** (`IRefreshableCommand` implementation)
+- **RelayAsyncCommand** (`IRefreshableCommand` async implementation)
 
 Converters:
 - **InverseBooleanConverter**
