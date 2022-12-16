@@ -4,6 +4,9 @@ using System.Windows.Input;
 
 namespace NullSoftware
 {
+    /// <summary>
+    /// Basic abstract async windows input command.
+    /// </summary>
     public abstract class AsyncCommandBase : IAsyncCommand, IRefreshableCommand
     {
         #region Events
