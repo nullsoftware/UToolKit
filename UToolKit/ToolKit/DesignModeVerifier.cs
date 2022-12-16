@@ -6,11 +6,18 @@ using System.Windows;
 
 namespace NullSoftware.ToolKit
 {
-    internal static class DesignModeVerifier
+    /// <summary>
+    /// Provides information about design mode.
+    /// </summary>
+    public static class DesignModeVerifier
     {
         private static DependencyObject _dumbObj;
 
-        internal static bool GetIsInDesignMode()
+        /// <summary>
+        /// Gets value that indicates whether the current code executes in design mode.
+        /// </summary>
+        /// <returns>A value that indicates whether the current code executes in design mode.</returns>
+        public static bool GetIsInDesignMode()
         {
             if (_dumbObj is null)
                 _dumbObj = new DependencyObject();
