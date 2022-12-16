@@ -9,6 +9,9 @@ namespace NullSoftware.ToolKit
     /// </summary>
     public class RoutedCommandHandler : Freezable
     {
+        /// <summary>
+        /// Identifies the Command dependency property.
+        /// </summary>
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
           "Command",
           typeof(ICommand),
