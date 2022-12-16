@@ -5,7 +5,7 @@ using System.Windows.Input;
 namespace NullSoftware
 {
     /// <summary>
-    /// Basic implementation of implementing a windows input command.
+    /// Basic delegate windows input command.
     /// </summary>
     public class RelayCommand : IRefreshableCommand
     {
@@ -105,7 +105,7 @@ namespace NullSoftware
     }
 
     /// <summary>
-    /// Basic implementation of implementing a windows input command with parameter support.
+    /// Basic delegate windows input command with parameter support.
     /// </summary>
     /// <typeparam name="T">Type of command parameter.</typeparam>
     public class RelayCommand<T> : IRefreshableCommand
