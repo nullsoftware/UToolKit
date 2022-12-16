@@ -109,11 +109,13 @@ or
 How to use `RoutedCommandHandlers`:
 ```XAML
 <Window xmlns:tk="https://github.com/nullsoftware/UToolKit">
+    <!-- here we bind ICommand to RouteUICommand -->
     <tk:RoutedCommandHandlers.Commands>
         <tk:RoutedCommandHandler RoutedCommand="ApplicationCommands.Create" Command="{Binding CreateCommand}"/>
         <tk:RoutedCommandHandler RoutedCommand="ApplicationCommands.Open" Command="{Binding OpenCommand}"/>
     </tk:RoutedCommandHandlers.Commands>
     
+    <!-- here our app content -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
