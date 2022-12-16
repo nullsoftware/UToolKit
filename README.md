@@ -93,8 +93,11 @@ How to set `PlacementStorageStrategy`:
         xmlns:prop="clr-namespace:ExampleProject.Properties"
         tk:WindowExtensions.PlacementStorageStrategy="{tk:RegistryStorage}" />
         
+        
 <!--also there is possible to specify name or other registry storage properties-->
-<!--tk:WindowExtensions.PlacementStorageStrategy="{tk:RegistryStorage NameFormat=Placement, Hive=CurrentUser, Key='SOFTWARE\MyCompany\MyApp'}"-->
+<Window xmlns:tk="https://github.com/nullsoftware/UToolKit" 
+        xmlns:prop="clr-namespace:ExampleProject.Properties"
+        tk:WindowExtensions.PlacementStorageStrategy="{tk:RegistryStorage NameFormat=Placement, Hive=CurrentUser, Key='SOFTWARE\MyCompany\MyApp'}" />
 ```
 or
 ```XAML
