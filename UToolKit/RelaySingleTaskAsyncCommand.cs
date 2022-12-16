@@ -53,12 +53,14 @@ namespace NullSoftware
         {
             if (execute == null)
                 throw new NullReferenceException(nameof(execute));
+            if (canExecute == null)
+                throw new NullReferenceException(nameof(canExecute));
 
             _execute = execute;
             _canExecute = canExecute;
         }
 
-        public RelaySingleTaskAsyncCommand(Func<Task> execute) : this(execute, null)
+        public RelaySingleTaskAsyncCommand(Func<Task> execute) : this(execute, new Func<bool>(() => true))
         {
 
         }
@@ -73,7 +75,7 @@ namespace NullSoftware
             if (IsExecuting)
                 return false;
 
-            return _canExecute == null ? true : _canExecute();
+            return _canExecute();
         }
 
         /// <inheritdoc/>
@@ -157,12 +159,14 @@ namespace NullSoftware
         {
             if (execute == null)
                 throw new NullReferenceException(nameof(execute));
+            if (canExecute == null)
+                throw new NullReferenceException(nameof(canExecute));
 
             _execute = execute;
             _canExecute = canExecute;
         }
 
-        public RelaySingleTaskAsyncCommand(Func<T, Task> execute) : this(execute, null)
+        public RelaySingleTaskAsyncCommand(Func<T, Task> execute) : this(execute, new Func<T, bool>((_) => true))
         {
 
         }
@@ -174,10 +178,10 @@ namespace NullSoftware
         /// <inheritdoc/>
         public virtual bool CanExecute(object parameter)
         {
-            if (_currentTask != null)
+            if (IsExecuting)
                 return false;
 
-            return _canExecute == null ? true : _canExecute((T)parameter);
+            return _canExecute((T)parameter);
         }
 
         /// <inheritdoc/>
