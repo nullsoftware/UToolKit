@@ -85,18 +85,16 @@ using NullSoftware.ToolKit;
 using NullSoftware.ToolKit.Converters;
 using NullSoftware.ToolKit.Extensions;
 ```
-----
+## Examples
 How to set `PlacementStorageStrategy`:  
 
 ```XAML
 <Window xmlns:tk="https://github.com/nullsoftware/UToolKit" 
-        xmlns:prop="clr-namespace:ExampleProject.Properties"
         tk:WindowExtensions.PlacementStorageStrategy="{tk:RegistryStorage}" />
         
         
 <!--also there is possible to specify name or other registry storage properties-->
 <Window xmlns:tk="https://github.com/nullsoftware/UToolKit" 
-        xmlns:prop="clr-namespace:ExampleProject.Properties"
         tk:WindowExtensions.PlacementStorageStrategy="{tk:RegistryStorage NameFormat=Placement, Hive=CurrentUser, Key='SOFTWARE\MyCompany\MyApp'}" />
 ```
 or
