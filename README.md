@@ -12,6 +12,7 @@ Main features:
 - **IRefreshableCommand** (inherits `ICommand`, allows to call `ICommand.CanExecuteChanged` manually)
 - **RelayCommand** (`IRefreshableCommand` implementation)
 - **RelayAsyncCommand** (`IRefreshableCommand` async implementation)
+- **RelaySingleTaskAsyncCommand** (`IRefreshableCommand` async implementation, designed for single task execution)
 
 Converters:
 - **InverseBooleanConverter**
