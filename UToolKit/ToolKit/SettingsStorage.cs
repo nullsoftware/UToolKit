@@ -77,7 +77,11 @@ namespace NullSoftware.ToolKit
             return string.Format(NameFormat, window.GetType().Name);
         }
 
-        private void EnsurePropertyCreated(string name)
+        /// <summary>
+        /// Ensures that specified property is created.
+        /// </summary>
+        /// <param name="name">Property name to create if not exists.</param>
+        protected virtual void EnsurePropertyCreated(string name)
         {
             if (!Settings.Properties.Cast<SettingsProperty>().Any(t => t.Name == name))
             {
