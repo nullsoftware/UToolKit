@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net452;net46;net461;net462;net47;net471;net472;net48;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <RootNamespace>NullSoftware</RootNamespace>
     <AssemblyName>UToolKit</AssemblyName>
@@ -14,9 +14,9 @@
     <PackageProjectUrl>https://github.com/nullsoftware/UToolKit</PackageProjectUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Version>1.0.0.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © Null Software, 2022. All rights reserved.</Copyright>
     <PackageTags>WPF ToolKit Converter Converters Services Window Placemet WindowPlacemet Position WindowPosition</PackageTags>
