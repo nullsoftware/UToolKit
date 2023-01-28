@@ -12,7 +12,7 @@ namespace NullSoftware.ToolKit
     public enum FocusMode : byte
     {
         /// <summary>
-        /// Defualt built-in focus mode.
+        /// Default built-in focus mode.
         /// </summary>
         Default,
 
