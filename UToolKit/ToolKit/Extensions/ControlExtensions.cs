@@ -23,7 +23,7 @@ namespace NullSoftware.ToolKit.Extensions
         /// </remarks>
         public static readonly DependencyProperty FocusModeProperty
            = DependencyProperty.RegisterAttached("FocusMode", typeof(FocusMode), typeof(ControlExtensions),
-               new FrameworkPropertyMetadata(false, OnFocusModeChanged));
+               new FrameworkPropertyMetadata(FocusMode.Default, OnFocusModeChanged));
 
         /// <summary>
         /// Sets the value of the FocusMode attached property
