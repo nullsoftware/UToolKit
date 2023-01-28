@@ -14,9 +14,9 @@
     <PackageProjectUrl>https://github.com/nullsoftware/UToolKit</PackageProjectUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-    <Version>1.0.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © Null Software, 2022. All rights reserved.</Copyright>
     <PackageTags>WPF ToolKit Converter Converters Services Window Placemet WindowPlacemet Position WindowPosition</PackageTags>
