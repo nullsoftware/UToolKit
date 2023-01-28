@@ -22,6 +22,8 @@ Converters:
 - **InverseBooleanToVisibilityConverter**
 
 Extensions:
+- **ControlExtensions**
+  * `FousMode` - focus mode for `Control`. There is two modes: `Default` and `FocusOnLoad`.
 - **HyperlinkExtensions**
   * `IsExternal` - if `true` Hyperlink will execute `Process.Start` using `Hyperlink.NavigateUri` after click.
 - **WindowExtensions**
