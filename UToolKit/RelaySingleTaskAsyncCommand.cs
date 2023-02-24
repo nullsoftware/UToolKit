@@ -121,7 +121,7 @@ namespace NullSoftware
         public async void Execute(object parameter)
         {
             _currentTask = ExecuteAsync(parameter);
-            RaisePropertyChanged(nameof(IsExecuting));
+            OnPropertyChanged(nameof(IsExecuting));
             Refresh();
 
             try
@@ -131,7 +131,7 @@ namespace NullSoftware
             finally
             {
                 _currentTask = null;
-                RaisePropertyChanged(nameof(IsExecuting));
+                OnPropertyChanged(nameof(IsExecuting));
                 Refresh();
             }
         }
@@ -262,7 +262,7 @@ namespace NullSoftware
         public async void Execute(object parameter)
         {
             _currentTask = ExecuteAsync(parameter);
-            RaisePropertyChanged(nameof(IsExecuting));
+            OnPropertyChanged(nameof(IsExecuting));
             Refresh();
 
             try
@@ -272,7 +272,7 @@ namespace NullSoftware
             finally
             {
                 _currentTask = null;
-                RaisePropertyChanged(nameof(IsExecuting));
+                OnPropertyChanged(nameof(IsExecuting));
                 Refresh();
             }
         }
