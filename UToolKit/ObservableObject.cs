@@ -30,6 +30,15 @@ namespace NullSoftware
         /// <summary>
         /// Raises <see cref="PropertyChanged"/> event.
         /// </summary>
+        /// <param name="e">Property changed event arguments.</param>
+        protected void RaisePropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// Raises <see cref="PropertyChanged"/> event.
+        /// </summary>
         /// <param name="propertyName">Property name.</param>
         protected void RaisePropertyChanged(string propertyName)
         {
