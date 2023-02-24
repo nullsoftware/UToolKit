@@ -14,21 +14,23 @@ namespace NullSoftware
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// Handles "property changed" operation.
-        /// </summary>
-        /// <remarks>
-        /// Use <see cref="SetProperty{T}(ref T, T, string)"/> instead.
-        /// </remarks>
-        /// <typeparam name="T">Type of property.</typeparam>
-        /// <param name="property">Property field.</param>
-        /// <param name="value">New value of property.</param>
-        /// <param name="propertyName">Property name.</param>
         [Obsolete("Use SetProperty method instead.", true)]
         protected void OnPropertyChanged<T>(ref T property, T value,
             [CallerMemberName] string propertyName = "")
         {
             SetProperty(ref property, value, propertyName);
+        }
+
+        [Obsolete("Use OnPropertyChanged method instead.", true)]
+        protected void RaisePropertyChanged(PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(e);
+        }
+
+        [Obsolete("Use OnPropertyChanged method instead.", true)]
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(propertyName);
         }
 
         /// <summary>
