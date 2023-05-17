@@ -89,6 +89,26 @@ using NullSoftware.ToolKit.Converters;
 using NullSoftware.ToolKit.Extensions;
 ```
 ## Examples
+To use converters just add `MergedDictionary` with source `pack://application:,,,/UToolKit;component/ToolKit/Converters.xaml` in your `App.xaml`:
+```xaml
+<Application
+    x:Class="ExampleProject.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ExampleProject"
+    StartupUri="MainWindow.xaml">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/UToolKit;component/ToolKit/Converters.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+```
+----
+
 How to set `PlacementStorageStrategy`:  
 
 ```XAML
