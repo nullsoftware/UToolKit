@@ -19,7 +19,7 @@
     <Version>1.1.0.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © Null Software, 2022. All rights reserved.</Copyright>
-    <PackageTags>WPF ToolKit Converter Converters Services Window Placemet WindowPlacemet Position WindowPosition MVVM Observable ObservableObject DelegateCommand RelayCommand Hyperlink AsyncCommand FocusOnLoad ViewModel BaseViewModel ViewModelBase RoutedCommand RoutedUICommand Bindable BindableObject RefreshableCommand</PackageTags>
+    <PackageTags>WPF ToolKit Converter Converters Services Window Placement WindowPlacement Position WindowPosition MVVM Observable ObservableObject DelegateCommand RelayCommand Hyperlink AsyncCommand FocusOnLoad ViewModel BaseViewModel ViewModelBase RoutedCommand RoutedUICommand Bindable BindableObject RefreshableCommand</PackageTags>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework.TrimEnd(`0123456789`))' == 'net' ">
