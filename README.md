@@ -1,5 +1,3 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
-
 [![](https://img.shields.io/nuget/vpre/UToolKit)](https://www.nuget.org/packages/UToolKit/)
 [![](https://img.shields.io/nuget/dt/UToolKit)](https://www.nuget.org/packages/UToolKit/)
 
@@ -126,6 +124,8 @@ or
         xmlns:prop="clr-namespace:ExampleProject.Properties"
         tk:WindowExtensions.PlacementStorageStrategy="{tk:SettingsStorage Settings={x:Static prop:Settings.Default}}" />
 ```
+**Note**: if you need manage window placement separetly you can use this package: [https://github.com/nullsoftware/AutoWindowPlacement.WPF](https://github.com/nullsoftware/AutoWindowPlacement.WPF) 
+
 ----
 How to use `RoutedCommandHandlers`:
 ```XAML
